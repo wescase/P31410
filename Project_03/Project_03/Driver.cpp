@@ -41,7 +41,8 @@ int main()
 	{
 		for (unsigned int i = 0; i < accVector.size(); i++)
 		{
-			accVector[i].writeData(dataOut);
+			accVector[i].writeAccData(dataOut);
+			accVector[i].getPerson().writePerData(dataOut);
 		}
 	}
 	

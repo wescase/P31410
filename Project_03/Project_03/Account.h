@@ -43,6 +43,12 @@ public:
 	// Returns: string
 	string getAddress() const;
 
+	// writePerson()
+	// Purpose: write the Person name and address properties
+	// Paramater: Person object
+	// Returns: none
+	void writePerData(ofstream&);
+
 private:
 	string name;
 	string address;
@@ -87,7 +93,7 @@ public:
 	// Purpose: Write the messages for an account to a file
 	// Parameters: Message to be written to file
 	// Returns: none
-	void  writeData(ofstream&) const;
+	void  writeAccData(ofstream&) const;
 
 	//--------------- mutators ---------------
 

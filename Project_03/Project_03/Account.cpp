@@ -40,9 +40,10 @@ Person Account::getPerson() const
 	return human;
 }
 
-void Account::writeData(ofstream& _file) const
+void Account::writeAccData(ofstream& _file) const
 {
-	_file << accNumber << "," << Account::getPerson().getName() << "," << Account::getPerson().getAddress() << "," << accBalance << endl;
+	_file << accNumber << endl;
+	_file << accBalance << endl;
 }
 
 void Account::makeDeposit(double _deposit)
@@ -77,4 +78,11 @@ string Person::getName() const
 string Person::getAddress() const
 {
 	return address;
+}
+
+void Person::writePerData(ofstream& _file)
+{
+	_file << name << endl;
+	_file << address << endl;
+	
 }

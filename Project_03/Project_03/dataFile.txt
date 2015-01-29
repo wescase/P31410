@@ -1,3 +1,12 @@
-1,Morgan A.,1234 Street,500
-2,Westley C.,4321 Cir.,1000
-3,Homer Simpson,5748 Spring,1200
+1
+500
+Morgan A.
+1234 Street
+2
+1000
+Westley C.
+4321 Cir.
+3
+1200
+Homer Simpson
+5748 Spring
