@@ -46,6 +46,11 @@ void Account::writeAccData(ofstream& _file) const
 	_file << accBalance << endl;
 }
 
+void Account::readAccData(ifstream& _file)
+{
+	
+}
+
 void Account::makeDeposit(double _deposit)
 {
 
@@ -56,6 +61,7 @@ void Account::makeWithdrawl(double _withdrawl)
 {
 	accBalance -= _withdrawl;
 }
+
 
 // ----------------- Person Class Methods ----------------------
 Person::Person()

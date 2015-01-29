@@ -49,6 +49,13 @@ public:
 	// Returns: none
 	void writePerData(ofstream&);
 
+	// readPerData()
+	// Purpose: read in Person data
+	// Parameters: file
+	// Returns: none
+	void readPerData(ifstream&);
+
+
 private:
 	string name;
 	string address;
@@ -94,6 +101,12 @@ public:
 	// Parameters: Message to be written to file
 	// Returns: none
 	void  writeAccData(ofstream&) const;
+
+	// readAccData()
+	// Purpose: read in Person data
+	// Parameters: file
+	// Returns: none
+	void readAccData(ifstream&);
 
 	//--------------- mutators ---------------
 

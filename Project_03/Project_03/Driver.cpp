@@ -51,8 +51,11 @@ int main()
 	// New : Clear the vector.
 	accVector.clear();
 
-	cout << accVector.size();
+	// create ifstrea object to read file
+	ifstream in;
+	in.open("dataFile.txt");
 	// New : Use the default Account constructor to create three Account objects and push each one into the vector of Account objects.
+
 	// New : Open the file that you just saved.
 	// New : Using a loop, tell each object to read itself in from the file.
 
