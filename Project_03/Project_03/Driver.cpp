@@ -51,19 +51,31 @@ int main()
 	// New : Clear the vector.
 	accVector.clear();
 
-	// create ifstrea object to read file
+	// create ifstream object to read file
 	ifstream in;
-	in.open("dataFile.txt");
+
 	// New : Use the default Account constructor to create three Account objects and push each one into the vector of Account objects.
+	
+	Account a4;
+	Account a5;
+	Account a6;
+
+	accVector.push_back(a4);
+	accVector.push_back(a5);
+	accVector.push_back(a6);
 
 	// New : Open the file that you just saved.
+
+	in.open("dataFile.txt");
+
 	// New : Using a loop, tell each object to read itself in from the file.
 
+	for (unsigned i = 0; i < accVector.size(); i++)
+	{
+		accVector[i].readAccData(in);
+		accVector[i].getPerson().readPerData(in);
 
-
-
-
-
+	}
 
 	// Using a for loop, add $25.00 to each account.
 	for (unsigned i = 0; i < accVector.size(); i++)
@@ -86,6 +98,17 @@ int main()
 
 void displayAccounts(const vector<Account>& _aVector)
 {
+	// Console out text
+	cout << "National Bank\n" << endl;
+	cout << "Account\tAccount" << endl;
+	cout << "Number\tName\t\t\tAddress\t\t\tBalance\n" << endl;
+	// Loop through the vector to get account info to display
+	for (unsigned i = 0; i < _aVector.size(); i++)
+	{
+		cout.setf(ios::fixed);
+		cout.precision(2);
+		cout << _aVector[i].getAccountNumber() << "\t" << _aVector[i].getPerson().getName() << "\t\t" << _aVector[i].getPerson().getAddress() << "\t\t$" << _aVector[i].getAccountBalance() << endl;
+	}
 	
 }
 

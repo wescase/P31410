@@ -14,6 +14,7 @@
 // --------------- Account Class Methods -------------------
 Account::Account()
 {
+	human = Person();
 	accBalance = 0.00;
 	accNumber = 0;
 }
@@ -48,7 +49,14 @@ void Account::writeAccData(ofstream& _file) const
 
 void Account::readAccData(ifstream& _file)
 {
-	
+	string accNum;
+	string accBal;
+
+	getline(_file, accNum);
+	accNumber = stoi(accNum);
+	getline(_file, accBal);
+	accBalance = stod(accBal);
+
 }
 
 void Account::makeDeposit(double _deposit)
@@ -91,4 +99,10 @@ void Person::writePerData(ofstream& _file)
 	_file << name << endl;
 	_file << address << endl;
 	
+}
+
+void Person::readPerData(ifstream& _file)
+{
+	getline(_file, name);
+	getline(_file, address);
 }
