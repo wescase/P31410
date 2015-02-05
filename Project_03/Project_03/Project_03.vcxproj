@@ -66,10 +66,12 @@
   <ItemGroup>
     <ClInclude Include="Account.h" />
     <ClInclude Include="Driver.h" />
+    <ClInclude Include="FileError.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="Driver.cpp" />
+    <ClCompile Include="FileError.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,8 +4,12 @@
 * File: Driver.cpp
 * Instructor: Dr. DeBry
 * Class: CS1410-001
-* Date Written: ************ FILL IN FINAL DATE **************
+* Date Written: February 5th 2015
 * Description: Write the users information to file and read back to the user when requested.
+*
+* I declare the the following source code was written by Wes and Morgan,
+* I understand the copying of any source code in whole or in part constitutes cheating,
+* and I will recieve a 0 on this assignment if I violate this policy
 *
 */
 
@@ -30,7 +34,6 @@ int main()
 	accVector.push_back(a2);
 	accVector.push_back(a3);
 
-/////////////////////// NEW PROJECT REQUIREMENTS ////////////////////////////
 	// New: Create an ofstream object and open a file.Hard code the file name in your program.Pass the file name as the parameter to the open function of your ofstream object so that your program assumes the file to be in the same folder as your executable file.
 	ofstream dataOut;
 
@@ -41,41 +44,63 @@ int main()
 	{
 		for (unsigned int i = 0; i < accVector.size(); i++)
 		{
-			accVector[i].writeAccData(dataOut);
 			accVector[i].getPerson().writePerData(dataOut);
+			accVector[i].writeAccData(dataOut);
 		}
 	}
 	
 	// New : Close the file.
 	dataOut.close();
+
 	// New : Clear the vector.
 	accVector.clear();
 
 	// create ifstream object to read file
 	ifstream in;
 
-	// New : Use the default Account constructor to create three Account objects and push each one into the vector of Account objects.
-	
-	Account a4;
-	Account a5;
-	Account a6;
-
-	accVector.push_back(a4);
-	accVector.push_back(a5);
-	accVector.push_back(a6);
-
 	// New : Open the file that you just saved.
-
 	in.open("dataFile.txt");
 
-	// New : Using a loop, tell each object to read itself in from the file.
-
-	for (unsigned i = 0; i < accVector.size(); i++)
+	// Check if the file in failed
+	if (in.fail())
 	{
-		accVector[i].readAccData(in);
-		accVector[i].getPerson().readPerData(in);
-
+		cout << "There was an error opening the file" << endl;
+		cout << "Application Ending" << endl;
+		system("pause");
+		return 1;
 	}
+
+	// New : Using a loop, tell each object to read itself in from the file.
+	while (in)
+	{
+		// New : Use the default Account constructor to create three Account objects and push each one into the vector of Account objects.
+		try
+		{
+			// Create Person Object
+			// then read the date
+			Person per;
+			per.readPerData(in);
+
+			// Create Account Object
+			// Read data
+			Account acc(per, 0, 0);
+			acc.readAccData(in);
+
+			// push Account Obj to Vector
+			accVector.push_back(acc);
+		}
+		catch (FileError e)
+		{
+			if (e.getErrorCode() == READ_ERROR)
+			{
+				cout << "There was an error reading the file" << endl;
+				cout << "Good-Bye" << endl;
+				in.close();
+				system("pause");
+				return 1;
+			}
+		}
+	} // End While Loop
 
 	// Using a for loop, add $25.00 to each account.
 	for (unsigned i = 0; i < accVector.size(); i++)
@@ -87,14 +112,14 @@ int main()
 	{
 		accVector[i].makeWithdrawl(WITHDRAW);
 	}
-	// Finally, pass the vector to your displayAccounts function to display the account information for each Account object in th*/e vector.
+
+	// Finally, pass the vector to your displayAccounts function to display the account information for each Account object in the vector.
 	displayAccounts(accVector);
 
 	cout << endl;
 	system("Pause");
 	return 0;
-
-}
+} // End Main()
 
 void displayAccounts(const vector<Account>& _aVector)
 {
@@ -109,6 +134,5 @@ void displayAccounts(const vector<Account>& _aVector)
 		cout.precision(2);
 		cout << _aVector[i].getAccountNumber() << "\t" << _aVector[i].getPerson().getName() << "\t\t" << _aVector[i].getPerson().getAddress() << "\t\t$" << _aVector[i].getAccountBalance() << endl;
 	}
-	
 }
 
