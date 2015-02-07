@@ -44,7 +44,6 @@ int main()
 	{
 		for (unsigned int i = 0; i < accVector.size(); i++)
 		{
-			accVector[i].getPerson().writePerData(dataOut);
 			accVector[i].writeAccData(dataOut);
 		}
 	}
@@ -76,16 +75,12 @@ int main()
 		// New : Use the default Account constructor to create three Account objects and push each one into the vector of Account objects.
 		try
 		{
-			// Create Person Object
-			// then read the date
-			Person per;
-			per.readPerData(in);
-
 			// Create Account Object
 			// Read data
-			Account acc(per, 0, 0);
+			Account acc = Account();	
 			acc.readAccData(in);
-
+			
+			
 			// push Account Obj to Vector
 			accVector.push_back(acc);
 		}
@@ -94,11 +89,19 @@ int main()
 			if (e.getErrorCode() == READ_ERROR)
 			{
 				cout << "There was an error reading the file" << endl;
-				cout << "Good-Bye" << endl;
+				cout << "Program Terminating..." << endl;
 				in.close();
 				system("pause");
 				return 1;
 			}
+		}
+		catch (invalid_argument e)
+		{
+			cout << "There was an error reading the file, invalid argument" << endl;
+			cout << "Program Terminating..." << endl;
+			in.close();
+			system("pause");
+			return 1;
 		}
 	} // End While Loop
 

@@ -49,6 +49,7 @@ void Account::writeAccData(ofstream& _file) const
 {
 	_file << accNumber << endl;
 	_file << accBalance << endl;
+	human.writePerData(_file);
 }
 
 void Account::readAccData(ifstream& _file)
@@ -66,6 +67,9 @@ void Account::readAccData(ifstream& _file)
 	{
 		throw FileError(END_OF_FILE);
 	}
+	// Have the person class read its own data
+	human.readPerData(_file);
+	
 	accNumber = stoi(accNum);
 	accBalance = stod(accBal);
 }
@@ -103,7 +107,7 @@ string Person::getAddress() const
 	return address;
 }
 
-void Person::writePerData(ofstream& _file)
+void Person::writePerData(ofstream& _file) const
 {
 	_file << name << endl;
 	_file << address << endl;

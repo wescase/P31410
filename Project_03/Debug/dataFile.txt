@@ -1,12 +1,12 @@
-1
-500
 Morgan A.
 1234 Street
-2
-1000
+1
+500
 Westley C.
 4321 Cir.
-3
-1200
+2
+1000
 Homer Simpson
 5748 Spring
+3
+1200

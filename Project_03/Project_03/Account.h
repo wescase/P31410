@@ -52,7 +52,7 @@ public:
 	// Purpose: write the Person name and address properties
 	// Paramater: Person object
 	// Returns: none
-	void writePerData(ofstream&);
+	void writePerData(ofstream&) const;
 
 	// readPerData()
 	// Purpose: read in Person data
